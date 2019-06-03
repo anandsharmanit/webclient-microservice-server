@@ -1,6 +1,7 @@
 package com.tavant.webclientmicroserviceserver.model;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class Account implements Serializable {
 
@@ -29,6 +30,21 @@ public class Account implements Serializable {
     @Override
     public String toString() {
         return "Account [amount=" + amount + ", number=" + number + ", name=" + name + "]";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Account account = (Account) o;
+        return Objects.equals(amount, account.amount) &&
+                Objects.equals(number, account.number) &&
+                Objects.equals(name, account.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(amount, number, name);
     }
 }
 
